@@ -6,40 +6,46 @@
 
 {% block content %}
 
-<div class = "login">
+<div class="row">
+  <div class="col">
+    <img src="https://images.unsplash.com/photo-1664360340328-5b0e78f0a01e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" class="img-fluid" alt="Responsive image">
+  </div>
 
-    <h1>Login</h1>
+  <div class="col d-flex align-items-center justify-content-center">
+    
+    <div class = "login">
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+        <h1>Login</h1>
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+        <form method="POST" action="">
+            {% csrf_token %}
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Belum mempunyai akun? <a href="{% url 'wishlist:register' %}">Buat Akun</a>
-
+            <form action="" method="post">
+                {% csrf_token %}
+                
+                <div class="form-group first">
+                  <label for="username">Username </style></label>
+                  <input type="text" class="form-control" placeholder="enter your username" name="username">
+                </div>
+                <div class="form-group last mb-3">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" placeholder="enter your password" name="password">
+                </div>
+                Don't have an account? <a href="{% url 'wishlist:register' %}">Create Account</a><br>
+                <br><input type="submit" value="Login" class="btn btn-block btn-primary">
+                
+        </form>
+    
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}     
+            
+    </div>
+  </div>
 </div>
 
 {% endblock content %}
